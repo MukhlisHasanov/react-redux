@@ -21,7 +21,7 @@ function Homework_15() {
   return (
     <PageWrapper>
       <ComponentControl>
-        <Counter count={count} onMinus={onMinus} onPlus={onPlus} />{" "}
+        <Counter count={count} onMinus={onMinus} onPlus={onPlus} />
         <Input id="first" name="name" placeholder="Enter smth" />
         <Button name="Money" type="submit" />
       </ComponentControl>
