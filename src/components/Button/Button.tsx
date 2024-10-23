@@ -1,5 +1,5 @@
-import { ButtonProps } from "./types";
-import { ButtonComponent } from "./styles";
+import { ButtonProps } from "./types"
+import { ButtonComponent } from "./styles"
 
 function Button({
   type = "button",
@@ -17,7 +17,7 @@ function Button({
     >
       {name}
     </ButtonComponent>
-  );
+  )
 }
 
-export default Button;
+export default Button
