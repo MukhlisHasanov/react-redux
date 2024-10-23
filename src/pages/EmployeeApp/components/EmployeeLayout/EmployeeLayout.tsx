@@ -60,4 +60,6 @@ function EmployeeLayout({ children }: EmployeeLayoutProps) {
     </EmployeeContext.Provider>
   );
 }
+
+console.log("salam");
 export default EmployeeLayout;
