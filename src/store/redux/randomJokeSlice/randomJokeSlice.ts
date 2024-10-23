@@ -16,7 +16,7 @@ export const randomJokeSlice = createAppSlice({
     getRandomJoke: create.asyncThunk(
       async (_, { rejectWithValue }) => {
         const RANDOM_JOKE_API_URL: string =
-          " https://official-joke-api.appspot.com/random_joke"
+          "https://official-joke-api.appspot.com/random_joke"
 
         const response = await fetch(RANDOM_JOKE_API_URL)
 
@@ -53,6 +53,7 @@ export const randomJokeSlice = createAppSlice({
     ),
     deleteAllJokes: create.reducer((state: RandomJokeSliceInitialState) => {
       state.data = []
+      state.error = undefined
     }),
 
     deleteJoke: create.reducer(

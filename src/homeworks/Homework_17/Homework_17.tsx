@@ -43,10 +43,9 @@ function Homework_17() {
         </JokeText>
         <ButtonControl>
           <Button
-            key={randomJoke.id}
             isDeleteVariant={true}
             disabled={isLoading}
-            name="X"
+            name="Delete"
             onClick={deleteJoke}
           />
         </ButtonControl>
@@ -67,6 +66,7 @@ function Homework_17() {
             disabled={isLoading}
             name="Delete All Jokes"
             onClick={deleteAllJokes}
+            isDeleteVariant={true}
           />
         )}
         <JokesContainer>{data.length > 0 && randomJokes}</JokesContainer>
