@@ -5,33 +5,35 @@ import {
   HeaderNav,
   HeaderLink,
   Main,
-} from "./styles";
+} from "./styles"
 
-import { v4 } from "uuid";
-import { useNavigate } from "react-router-dom";
-import { useState, createContext } from "react";
-import { EmployeeContextState, UserDataProps } from "pages/EmployeeApp/types";
+import { v4 } from "uuid"
+import { useNavigate } from "react-router-dom"
+import { useState, createContext } from "react"
+import { EmployeeContextState, UserDataProps } from "pages/EmployeeApp/types"
 
-import { APP_EMPLOYEE_ROUTES } from "constants/routes";
+import { APP_EMPLOYEE_ROUTES } from "constants/routes"
 
-import { EmployeeLayoutProps } from "./types";
+import { EmployeeLayoutProps } from "./types"
 
 export const EmployeeContext = createContext<EmployeeContextState>({
   userData: [],
-  setUserData: () => {},
-});
+  setUserData: () => {},  
+})
+
+
 
 function EmployeeLayout({ children }: EmployeeLayoutProps) {
-  const [userData, setUserData] = useState<UserDataProps[]>([]);
+  const [userData, setUserData] = useState<UserDataProps[]>([])
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const goToEmployeeForm = () => {
-    navigate(APP_EMPLOYEE_ROUTES.CREATE_EMPLOYEE);
-  };
+    navigate(APP_EMPLOYEE_ROUTES.CREATE_EMPLOYEE)
+  }
   const appLinks = {
     [APP_EMPLOYEE_ROUTES.CREATE_EMPLOYEE]: "Create Employee",
     [APP_EMPLOYEE_ROUTES.EMPLOYEES]: "Employees",
-  };
+  }
 
   const headerLinks = Object.keys(appLinks).map((link: string) => {
     return (
@@ -45,8 +47,8 @@ function EmployeeLayout({ children }: EmployeeLayoutProps) {
       >
         {appLinks[link as keyof typeof appLinks]}
       </HeaderLink>
-    );
-  });
+    )
+  })
 
   return (
     <EmployeeContext.Provider value={{ userData, setUserData }}>
@@ -58,6 +60,6 @@ function EmployeeLayout({ children }: EmployeeLayoutProps) {
         <Main>{children}</Main>
       </EmployeeLayoutWrapper>
     </EmployeeContext.Provider>
-  );
+  )
 }
-export default EmployeeLayout;
+export default EmployeeLayout

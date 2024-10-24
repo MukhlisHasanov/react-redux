@@ -1,20 +1,41 @@
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { useFormik } from "formik";
-import * as Yup from "yup";
+import { useContext } from "react"
+import { useNavigate } from "react-router-dom"
+import { useFormik } from "formik"
+import * as Yup from "yup"
 
-import Input from "components/Input/Input";
-import Button from "components/Button/Button";
-import { EmployeeContext } from "pages/EmployeeApp/components/EmployeeLayout/EmployeeLayout";
-import { APP_EMPLOYEE_ROUTES } from "constants/routes";
+import Input from "components/Input/Input"
+import Button from "components/Button/Button"
+import { EmployeeContext } from "pages/EmployeeApp/components/EmployeeLayout/EmployeeLayout"
+import { APP_EMPLOYEE_ROUTES } from "constants/routes"
 
-import { EmployeeFormContainer, InputContainer } from "./styles";
-import { EMPLOYEE_FORM_NAMES } from "./types";
-import { UserDataProps } from "pages/EmployeeApp/types";
+import { EmployeeFormContainer, InputContainer } from "./styles"
+import { EMPLOYEE_FORM_NAMES } from "./types"
+import { UserDataProps } from "pages/EmployeeApp/types"
+import { useAppDispatch, useAppSelector } from "store/hooks"
+import {
+  employeeSliceActions,
+  employeeSliceSelectors,
+} from "store/redux/employeeApp/employeeSlice"
+import { Employee } from "store/redux/employeeApp/types"
 
 function EmployeeForm() {
-  const { setUserData } = useContext(EmployeeContext);
-  const navigate = useNavigate();
+  // const { setUserData } = useContext(EmployeeContext)
+  const navigate = useNavigate()
+
+  const dispatch = useAppDispatch()
+  const employeeInitialState = useAppSelector(employeeSliceSelectors.employees)
+
+  const createEmployee = () => {}
+
+  const deleteAllEmployees = () => {
+    dispatch(employeeSliceActions.deleteAllEmployees())
+  }
+
+  const employees = employeeInitialState.map((employee: Employee) => {
+    const deleteEmployee = () => {
+      dispatch(employeeSliceActions.deleteEmployee({ id: employee.id }))
+    }
+  })
 
   const validationSchema = Yup.object().shape({
     [EMPLOYEE_FORM_NAMES.NAME]: Yup.string()
@@ -30,9 +51,9 @@ function EmployeeForm() {
       .max(3, "The maximum length of age is 3"),
     [EMPLOYEE_FORM_NAMES.JOB_POSITION]: Yup.string().max(
       30,
-      "The maximum length of job position is 30"
+      "The maximum length of job position is 30",
     ),
-  });
+  })
 
   const formik = useFormik({
     initialValues: {
@@ -44,13 +65,15 @@ function EmployeeForm() {
     validationSchema,
     validateOnMount: false,
     validateOnChange: false,
-    onSubmit: (values) => {
-      setUserData((prevValue: UserDataProps[]) => {
-        return [...prevValue, values];
-      });
-      navigate(APP_EMPLOYEE_ROUTES.EMPLOYEES);
+    onSubmit: values => {
+      dispatch(employeeSliceActions.createEmployee(values))
+      navigate(APP_EMPLOYEE_ROUTES.EMPLOYEES)
+      // setUserData((prevValue: UserDataProps[]) => {
+      //   return [...prevValue, values]
+      // })
+      // navigate(APP_EMPLOYEE_ROUTES.EMPLOYEES)
     },
-  });
+  })
 
   return (
     <EmployeeFormContainer onSubmit={formik.handleSubmit}>
@@ -94,6 +117,6 @@ function EmployeeForm() {
       </InputContainer>
       <Button type="submit" name="Create" />
     </EmployeeFormContainer>
-  );
+  )
 }
-export default EmployeeForm;
+export default EmployeeForm
