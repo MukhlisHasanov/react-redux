@@ -1,7 +1,12 @@
-import { useContext } from "react"
-import { CardWrapper, CardLabel, CardItem, UsersNotFound } from "./styles"
-import { EmployeeContext } from "pages/EmployeeApp/components/EmployeeLayout/EmployeeLayout"
-import { UserDataProps } from "pages/EmployeeApp/types"
+import {
+  CardWrapper,
+  CardLabel,
+  CardItem,
+  UsersNotFound,
+  PageWrapper,
+  ButtonControl,
+} from "./styles"
+
 import { useAppSelector, useAppDispatch } from "store/hooks"
 import {
   employeeSliceSelectors,
@@ -23,7 +28,7 @@ function EmployeeCard() {
       dispatch(employeeSliceActions.deleteEmployee({ id: employee.id }))
     }
     return (
-      <>
+      <PageWrapper>
         <CardWrapper>
           <CardLabel>
             Name:
@@ -43,8 +48,14 @@ function EmployeeCard() {
           </CardLabel>
           <Button isDeleteVariant name="Delete" onClick={deleteEmployee} />
         </CardWrapper>
-        <Button isDeleteVariant name="Remove All Employees" onClick={deleteAllEmployees}/>
-      </>
+        <ButtonControl>
+          <Button
+            isDeleteVariant
+            name="Remove All Employees"
+            onClick={deleteAllEmployees}
+          />
+        </ButtonControl>
+      </PageWrapper>
     )
   })
   return (

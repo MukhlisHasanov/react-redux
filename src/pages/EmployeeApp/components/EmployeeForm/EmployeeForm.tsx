@@ -1,30 +1,25 @@
-import { useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { useFormik } from "formik"
 import * as Yup from "yup"
 
 import Input from "components/Input/Input"
 import Button from "components/Button/Button"
-import { EmployeeContext } from "pages/EmployeeApp/components/EmployeeLayout/EmployeeLayout"
+
 import { APP_EMPLOYEE_ROUTES } from "constants/routes"
 
 import { EmployeeFormContainer, InputContainer } from "./styles"
 import { EMPLOYEE_FORM_NAMES } from "./types"
-import { UserDataProps } from "pages/EmployeeApp/types"
+
 import { useAppDispatch, useAppSelector } from "store/hooks"
 import {
   employeeSliceActions,
   employeeSliceSelectors,
 } from "store/redux/employeeApp/employeeSlice"
-import { Employee } from "store/redux/employeeApp/types"
 
 function EmployeeForm() {
   const navigate = useNavigate()
 
   const dispatch = useAppDispatch()
-  const employeeInitialState = useAppSelector(employeeSliceSelectors.employees)
-
-
 
   const validationSchema = Yup.object().shape({
     [EMPLOYEE_FORM_NAMES.NAME]: Yup.string()
