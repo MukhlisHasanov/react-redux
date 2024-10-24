@@ -14,7 +14,7 @@ import Homework_17 from "homeworks/Homework_17/Homework_17"
 // LESSONS
 import Lesson_16 from "lessons/Lesson_16/Lesson_16"
 import Lesson_17 from "lessons/Lesson_17/Lesson_17"
-import EmployeeApp from "pages/EmployeeApp/EmployeeApp"
+
 
 //CONSULTATIONS
 
@@ -30,7 +30,7 @@ function App() {
       {/* <Lesson_16 /> */}
       {/* <Lesson_17 /> */}
       {/* //CONSULTATIONS */}
-      {/* <EmployeeLayout>
+      <EmployeeLayout>
         <Routes>
           <Route
             path={APP_EMPLOYEE_ROUTES.CREATE_EMPLOYEE}
@@ -45,8 +45,7 @@ function App() {
             element="Page Is Not Found"
           />
         </Routes>
-      </EmployeeLayout> */}
-      <EmployeeApp />
+      </EmployeeLayout>
     </>
   )
 }

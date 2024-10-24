@@ -1,41 +1,25 @@
-import { useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { useFormik } from "formik"
 import * as Yup from "yup"
 
 import Input from "components/Input/Input"
 import Button from "components/Button/Button"
-import { EmployeeContext } from "pages/EmployeeApp/components/EmployeeLayout/EmployeeLayout"
+
 import { APP_EMPLOYEE_ROUTES } from "constants/routes"
 
 import { EmployeeFormContainer, InputContainer } from "./styles"
 import { EMPLOYEE_FORM_NAMES } from "./types"
-import { UserDataProps } from "pages/EmployeeApp/types"
+
 import { useAppDispatch, useAppSelector } from "store/hooks"
 import {
   employeeSliceActions,
   employeeSliceSelectors,
 } from "store/redux/employeeApp/employeeSlice"
-import { Employee } from "store/redux/employeeApp/types"
 
 function EmployeeForm() {
-  // const { setUserData } = useContext(EmployeeContext)
   const navigate = useNavigate()
 
   const dispatch = useAppDispatch()
-  const employeeInitialState = useAppSelector(employeeSliceSelectors.employees)
-
-  const createEmployee = () => {}
-
-  const deleteAllEmployees = () => {
-    dispatch(employeeSliceActions.deleteAllEmployees())
-  }
-
-  const employees = employeeInitialState.map((employee: Employee) => {
-    const deleteEmployee = () => {
-      dispatch(employeeSliceActions.deleteEmployee({ id: employee.id }))
-    }
-  })
 
   const validationSchema = Yup.object().shape({
     [EMPLOYEE_FORM_NAMES.NAME]: Yup.string()
@@ -68,10 +52,6 @@ function EmployeeForm() {
     onSubmit: values => {
       dispatch(employeeSliceActions.createEmployee(values))
       navigate(APP_EMPLOYEE_ROUTES.EMPLOYEES)
-      // setUserData((prevValue: UserDataProps[]) => {
-      //   return [...prevValue, values]
-      // })
-      // navigate(APP_EMPLOYEE_ROUTES.EMPLOYEES)
     },
   })
 

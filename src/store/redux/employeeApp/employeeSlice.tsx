@@ -12,7 +12,6 @@ import { EmployeeFormValues } from "pages/EmployeeApp/components/EmployeeForm/ty
 export const employeeInitialState: EmployeeSliceInitialState = {
   data: [],
   error: undefined,
-  isFetching: false,
 }
 
 export const employeeSlice = createAppSlice({
@@ -38,24 +37,7 @@ export const employeeSlice = createAppSlice({
         )
       },
     ),
-    deleteAllEmployees: create.reducer(() => {
-      employeeInitialState
-    }),
-    // setUserData: create.reducer(() => {
-    //   ;(state: EmployeeSliceInitialState) => {
-    //     return [
-    //       ...state.data,
-    //       {
-    //         id: v4(),
-    //         name: EMPLOYEE_FORM_NAMES.NAME,
-    //         surname: EMPLOYEE_FORM_NAMES.SURNAME,
-    //         age: EMPLOYEE_FORM_NAMES.AGE,
-    //         jobPosition: EMPLOYEE_FORM_NAMES.JOB_POSITION,
-    //       },
-    //     ]
-    //   }
-    //   navigate(APP_EMPLOYEE_ROUTES.EMPLOYEES)
-    // }),
+    deleteAllEmployees: create.reducer(() => employeeInitialState),
   }),
 
   selectors: {

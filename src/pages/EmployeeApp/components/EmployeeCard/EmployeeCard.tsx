@@ -1,41 +1,72 @@
-import { useContext } from "react";
-import { CardWrapper, CardLabel, CardItem, UsersNotFound } from "./styles";
-import { EmployeeContext } from "pages/EmployeeApp/components/EmployeeLayout/EmployeeLayout";
-import { UserDataProps } from "pages/EmployeeApp/types";
+import {
+  CardWrapper,
+  CardLabel,
+  CardItem,
+  UsersNotFound,
+  PageWrapper,
+  ButtonControl,
+} from "./styles"
+
+import { useAppSelector, useAppDispatch } from "store/hooks"
+import {
+  employeeSliceSelectors,
+  employeeSliceActions,
+} from "store/redux/employeeApp/employeeSlice"
+import { Employee } from "store/redux/employeeApp/types"
+import Button from "components/Button/Button"
 
 function EmployeeCard() {
-  const { userData } = useContext(EmployeeContext);
-  const userCards = userData.map((user: UserDataProps) => {
+  const dispatch = useAppDispatch()
+
+  const deleteAllEmployees = () => {
+    dispatch(employeeSliceActions.deleteAllEmployees())
+  }
+
+  const employeeInitialState = useAppSelector(employeeSliceSelectors.employees)
+  const employeeCards = employeeInitialState.map((employee: Employee) => {
+    const deleteEmployee = () => {
+      dispatch(employeeSliceActions.deleteEmployee({ id: employee.id }))
+    }
     return (
-      <CardWrapper>
-        <CardLabel>
-          Name:
-          <CardItem>{user.name}</CardItem>
-        </CardLabel>
-        <CardLabel>
-          Surname:
-          <CardItem>{user.surname}</CardItem>
-        </CardLabel>
-        <CardLabel>
-          Age:
-          <CardItem>{user.age}</CardItem>
-        </CardLabel>
-        <CardLabel>
-          Job Position:
-          <CardItem>{user.jobPosition}</CardItem>
-        </CardLabel>
-      </CardWrapper>
-    );
-  });
+      <PageWrapper>
+        <CardWrapper>
+          <CardLabel>
+            Name:
+            <CardItem>{employee.name}</CardItem>
+          </CardLabel>
+          <CardLabel>
+            Surname:
+            <CardItem>{employee.surname}</CardItem>
+          </CardLabel>
+          <CardLabel>
+            Age:
+            <CardItem>{employee.age}</CardItem>
+          </CardLabel>
+          <CardLabel>
+            Job Position:
+            <CardItem>{employee.jobPosition}</CardItem>
+          </CardLabel>
+          <Button isDeleteVariant name="Delete" onClick={deleteEmployee} />
+        </CardWrapper>
+        <ButtonControl>
+          <Button
+            isDeleteVariant
+            name="Remove All Employees"
+            onClick={deleteAllEmployees}
+          />
+        </ButtonControl>
+      </PageWrapper>
+    )
+  })
   return (
     <>
-      {userData.length > 0 ? (
-        userCards
+      {employeeInitialState.length > 0 ? (
+        employeeCards
       ) : (
         <UsersNotFound>Users not found</UsersNotFound>
       )}{" "}
     </>
-  );
+  )
 }
 
-export default EmployeeCard;
+export default EmployeeCard

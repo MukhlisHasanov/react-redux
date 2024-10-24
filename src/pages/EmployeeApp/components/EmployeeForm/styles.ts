@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from "@emotion/styled"
 
 export const EmployeeFormContainer = styled.form`
   display: flex;
@@ -11,11 +11,11 @@ export const EmployeeFormContainer = styled.form`
   text-align: center;
   background-color: white;
   padding: 50px;
-`;
+`
 
 export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
   text-align: left;
-`;
+`

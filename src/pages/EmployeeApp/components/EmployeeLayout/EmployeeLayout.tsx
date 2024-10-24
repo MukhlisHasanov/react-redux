@@ -9,23 +9,12 @@ import {
 
 import { v4 } from "uuid"
 import { useNavigate } from "react-router-dom"
-import { useState, createContext } from "react"
-import { EmployeeContextState, UserDataProps } from "pages/EmployeeApp/types"
 
 import { APP_EMPLOYEE_ROUTES } from "constants/routes"
 
 import { EmployeeLayoutProps } from "./types"
 
-export const EmployeeContext = createContext<EmployeeContextState>({
-  userData: [],
-  setUserData: () => {},  
-})
-
-
-
 function EmployeeLayout({ children }: EmployeeLayoutProps) {
-  const [userData, setUserData] = useState<UserDataProps[]>([])
-
   const navigate = useNavigate()
   const goToEmployeeForm = () => {
     navigate(APP_EMPLOYEE_ROUTES.CREATE_EMPLOYEE)
@@ -51,15 +40,13 @@ function EmployeeLayout({ children }: EmployeeLayoutProps) {
   })
 
   return (
-    <EmployeeContext.Provider value={{ userData, setUserData }}>
-      <EmployeeLayoutWrapper>
-        <AppHeader>
-          <HeaderLogo onClick={goToEmployeeForm}>Logo</HeaderLogo>
-          <HeaderNav>{headerLinks}</HeaderNav>
-        </AppHeader>
-        <Main>{children}</Main>
-      </EmployeeLayoutWrapper>
-    </EmployeeContext.Provider>
+    <EmployeeLayoutWrapper>
+      <AppHeader>
+        <HeaderLogo onClick={goToEmployeeForm}>Logo</HeaderLogo>
+        <HeaderNav>{headerLinks}</HeaderNav>
+      </AppHeader>
+      <Main>{children}</Main>
+    </EmployeeLayoutWrapper>
   )
 }
 export default EmployeeLayout
