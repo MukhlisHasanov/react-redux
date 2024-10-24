@@ -1,4 +1,11 @@
 import GlobalStyles from "styles/GlobalStyles"
+import { Route, Routes } from "react-router-dom";
+
+import EmployeeLayout from "pages/EmployeeApp/components/EmployeeLayout/EmployeeLayout";
+import EmployeeForm from "pages/EmployeeApp/components/EmployeeForm/EmployeeForm";
+import EmployeeCard from "pages/EmployeeApp/components/EmployeeCard/EmployeeCard";
+
+import { APP_EMPLOYEE_ROUTES } from "constants/routes";
 
 // HOMEWORKS
 import Homework_15 from "homeworks/Homework_15/Homework_15"
@@ -22,6 +29,22 @@ function App() {
       {/* <Lesson_16 /> */}
       {/* <Lesson_17 /> */}
       {/* //CONSULTATIONS */}
+      <EmployeeLayout>
+      <Routes>
+        <Route
+          path={APP_EMPLOYEE_ROUTES.CREATE_EMPLOYEE}
+          element={<EmployeeForm />}
+        />
+        <Route
+          path={APP_EMPLOYEE_ROUTES.EMPLOYEES}
+          element={<EmployeeCard />}
+        />
+        <Route
+          path={APP_EMPLOYEE_ROUTES.NOT_FOUND}
+          element="Page Is Not Found"
+        />
+      </Routes>
+    </EmployeeLayout>
     </>
   )
 }
