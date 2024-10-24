@@ -24,15 +24,7 @@ function EmployeeForm() {
   const dispatch = useAppDispatch()
   const employeeInitialState = useAppSelector(employeeSliceSelectors.employees)
 
-  const deleteAllEmployees = () => {
-    dispatch(employeeSliceActions.deleteAllEmployees())
-  }
 
-  const employees = employeeInitialState.map((employee: Employee) => {
-    const deleteEmployee = () => {
-      dispatch(employeeSliceActions.deleteEmployee({ id: employee.id }))
-    }
-  })
 
   const validationSchema = Yup.object().shape({
     [EMPLOYEE_FORM_NAMES.NAME]: Yup.string()

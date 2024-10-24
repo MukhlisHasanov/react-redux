@@ -12,7 +12,6 @@ import { EmployeeFormValues } from "pages/EmployeeApp/components/EmployeeForm/ty
 export const employeeInitialState: EmployeeSliceInitialState = {
   data: [],
   error: undefined,
-  isFetching: false,
 }
 
 export const employeeSlice = createAppSlice({
@@ -38,9 +37,7 @@ export const employeeSlice = createAppSlice({
         )
       },
     ),
-    deleteAllEmployees: create.reducer(() => {
-      employeeInitialState
-    }),
+    deleteAllEmployees: create.reducer(() => employeeInitialState),
   }),
 
   selectors: {
