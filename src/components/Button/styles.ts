@@ -1,9 +1,9 @@
-import styled from "@emotion/styled";
+import styled from "@emotion/styled"
 
-import { colors } from "styles/colors";
+import { colors } from "styles/colors"
 
 interface ButtonComponentStyleProps {
-  $isDeleteVariant: boolean;
+  $isDeleteVariant: boolean
 }
 
 export const ButtonComponent = styled.button<ButtonComponentStyleProps>`
@@ -13,18 +13,19 @@ export const ButtonComponent = styled.button<ButtonComponentStyleProps>`
   border: none;
   background-color: ${({ $isDeleteVariant, disabled }) => {
     if (disabled) {
-      return colors.GREY;
+      return colors.GREY
     } else {
       if ($isDeleteVariant) {
-        return colors.ERROR;
+        return colors.ERROR
       } else {
-        return colors.PRIMARY_BLUE;
+        return colors.PRIMARY_BLUE
       }
     }
   }};
   color: white;
+  font-family: Lato;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 400;
   border-radius: 4px;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
-`;
+`

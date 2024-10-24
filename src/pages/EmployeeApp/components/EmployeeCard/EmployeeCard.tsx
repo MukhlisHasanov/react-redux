@@ -1,19 +1,20 @@
-import {
-  CardWrapper,
-  CardLabel,
-  CardItem,
-  UsersNotFound,
-  PageWrapper,
-  ButtonControl,
-} from "./styles"
-
 import { useAppSelector, useAppDispatch } from "store/hooks"
+import { Employee } from "store/redux/employeeApp/types"
 import {
   employeeSliceSelectors,
   employeeSliceActions,
 } from "store/redux/employeeApp/employeeSlice"
-import { Employee } from "store/redux/employeeApp/types"
 import Button from "components/Button/Button"
+
+import {
+  PageWrapper,
+  EmployeeCardContainer,
+  CardLabel,
+  LabelName,
+  CardItem,
+  UsersNotFound,
+  ButtonControl,
+} from "./styles"
 
 function EmployeeCard() {
   const dispatch = useAppDispatch()
@@ -29,25 +30,25 @@ function EmployeeCard() {
     }
     return (
       <PageWrapper>
-        <CardWrapper>
+        <EmployeeCardContainer>
           <CardLabel>
-            Name:
+            <LabelName>Name</LabelName>
             <CardItem>{employee.name}</CardItem>
           </CardLabel>
           <CardLabel>
-            Surname:
+            <LabelName>Surname</LabelName>
             <CardItem>{employee.surname}</CardItem>
           </CardLabel>
           <CardLabel>
-            Age:
+            <LabelName>Age</LabelName>
             <CardItem>{employee.age}</CardItem>
           </CardLabel>
           <CardLabel>
-            Job Position:
+            <LabelName>Job Position</LabelName>
             <CardItem>{employee.jobPosition}</CardItem>
           </CardLabel>
           <Button isDeleteVariant name="Delete" onClick={deleteEmployee} />
-        </CardWrapper>
+        </EmployeeCardContainer>
         <ButtonControl>
           <Button
             isDeleteVariant
