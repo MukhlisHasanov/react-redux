@@ -9,13 +9,6 @@ import { useAppDispatch, useAppSelector } from "store/hooks"
 import { employeeSliceActions, employeeSliceSelectors } from "store/redux/employeeApp/employeeSlice"
 
 function EmployeeApp() {
-  // const dispatch = useAppDispatch()
-  // const employeeInitialState = useAppSelector(employeeSliceSelectors.employees)
-
-  // const createEmployee = () => {
-  //   dispatch(employeeSliceActions.createEmployee())
-  // }
-
   return (
     <EmployeeLayout>
       <Routes>

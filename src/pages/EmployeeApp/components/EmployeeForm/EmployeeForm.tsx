@@ -19,13 +19,10 @@ import {
 import { Employee } from "store/redux/employeeApp/types"
 
 function EmployeeForm() {
-  // const { setUserData } = useContext(EmployeeContext)
   const navigate = useNavigate()
 
   const dispatch = useAppDispatch()
   const employeeInitialState = useAppSelector(employeeSliceSelectors.employees)
-
-  const createEmployee = () => {}
 
   const deleteAllEmployees = () => {
     dispatch(employeeSliceActions.deleteAllEmployees())
@@ -68,10 +65,6 @@ function EmployeeForm() {
     onSubmit: values => {
       dispatch(employeeSliceActions.createEmployee(values))
       navigate(APP_EMPLOYEE_ROUTES.EMPLOYEES)
-      // setUserData((prevValue: UserDataProps[]) => {
-      //   return [...prevValue, values]
-      // })
-      // navigate(APP_EMPLOYEE_ROUTES.EMPLOYEES)
     },
   })
 

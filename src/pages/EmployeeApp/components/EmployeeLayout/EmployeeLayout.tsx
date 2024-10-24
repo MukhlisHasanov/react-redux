@@ -18,10 +18,8 @@ import { EmployeeLayoutProps } from "./types"
 
 export const EmployeeContext = createContext<EmployeeContextState>({
   userData: [],
-  setUserData: () => {},  
+  setUserData: () => {},
 })
-
-
 
 function EmployeeLayout({ children }: EmployeeLayoutProps) {
   const [userData, setUserData] = useState<UserDataProps[]>([])

@@ -41,21 +41,6 @@ export const employeeSlice = createAppSlice({
     deleteAllEmployees: create.reducer(() => {
       employeeInitialState
     }),
-    // setUserData: create.reducer(() => {
-    //   ;(state: EmployeeSliceInitialState) => {
-    //     return [
-    //       ...state.data,
-    //       {
-    //         id: v4(),
-    //         name: EMPLOYEE_FORM_NAMES.NAME,
-    //         surname: EMPLOYEE_FORM_NAMES.SURNAME,
-    //         age: EMPLOYEE_FORM_NAMES.AGE,
-    //         jobPosition: EMPLOYEE_FORM_NAMES.JOB_POSITION,
-    //       },
-    //     ]
-    //   }
-    //   navigate(APP_EMPLOYEE_ROUTES.EMPLOYEES)
-    // }),
   }),
 
   selectors: {

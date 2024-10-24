@@ -1,41 +1,44 @@
-import { useContext } from "react";
-import { CardWrapper, CardLabel, CardItem, UsersNotFound } from "./styles";
-import { EmployeeContext } from "pages/EmployeeApp/components/EmployeeLayout/EmployeeLayout";
-import { UserDataProps } from "pages/EmployeeApp/types";
+import { useContext } from "react"
+import { CardWrapper, CardLabel, CardItem, UsersNotFound } from "./styles"
+import { EmployeeContext } from "pages/EmployeeApp/components/EmployeeLayout/EmployeeLayout"
+import { UserDataProps } from "pages/EmployeeApp/types"
+import { useAppSelector, useAppDispatch } from "store/hooks"
+import { employeeSliceSelectors } from "store/redux/employeeApp/employeeSlice"
+import { Employee } from "store/redux/employeeApp/types"
 
 function EmployeeCard() {
-  const { userData } = useContext(EmployeeContext);
-  const userCards = userData.map((user: UserDataProps) => {
+  const employeeInitialState = useAppSelector(employeeSliceSelectors.employees)
+  const employeeCards = employeeInitialState.map((employee: Employee) => {
     return (
       <CardWrapper>
         <CardLabel>
           Name:
-          <CardItem>{user.name}</CardItem>
+          <CardItem>{employee.name}</CardItem>
         </CardLabel>
         <CardLabel>
           Surname:
-          <CardItem>{user.surname}</CardItem>
+          <CardItem>{employee.surname}</CardItem>
         </CardLabel>
         <CardLabel>
           Age:
-          <CardItem>{user.age}</CardItem>
+          <CardItem>{employee.age}</CardItem>
         </CardLabel>
         <CardLabel>
           Job Position:
-          <CardItem>{user.jobPosition}</CardItem>
+          <CardItem>{employee.jobPosition}</CardItem>
         </CardLabel>
       </CardWrapper>
-    );
-  });
+    )
+  })
   return (
     <>
-      {userData.length > 0 ? (
-        userCards
+      {employeeInitialState.length > 0 ? (
+        employeeCards
       ) : (
         <UsersNotFound>Users not found</UsersNotFound>
       )}{" "}
     </>
-  );
+  )
 }
 
-export default EmployeeCard;
+export default EmployeeCard
