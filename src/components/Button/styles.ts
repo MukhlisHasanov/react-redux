@@ -28,3 +28,4 @@ export const ButtonComponent = styled.button<ButtonComponentStyleProps>`
   border-radius: 4px;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 `;
+

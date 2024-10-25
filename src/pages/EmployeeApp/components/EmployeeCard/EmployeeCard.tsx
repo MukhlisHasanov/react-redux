@@ -5,6 +5,7 @@ import {
   UsersNotFound,
   PageWrapper,
   ButtonControl,
+  LabelName,
 } from "./styles"
 
 import { useAppSelector, useAppDispatch } from "store/hooks"
@@ -31,19 +32,20 @@ function EmployeeCard() {
       <PageWrapper>
         <CardWrapper>
           <CardLabel>
-            Name:
+            <LabelName>Name:</LabelName>
             <CardItem>{employee.name}</CardItem>
           </CardLabel>
           <CardLabel>
-            Surname:
+            {" "}
+            <LabelName>Surname:</LabelName>
             <CardItem>{employee.surname}</CardItem>
           </CardLabel>
           <CardLabel>
-            Age:
+            <LabelName>Age:</LabelName>
             <CardItem>{employee.age}</CardItem>
           </CardLabel>
           <CardLabel>
-            Job Position:
+            <LabelName>Job Position:</LabelName>
             <CardItem>{employee.jobPosition}</CardItem>
           </CardLabel>
           <Button isDeleteVariant name="Delete" onClick={deleteEmployee} />
