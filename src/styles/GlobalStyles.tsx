@@ -6,7 +6,7 @@ function GlobalStyles() {
     
     * {
       box-sizing: border-box;
-
+      font-family: "Lato", sans-serif;
     }
 
     body,

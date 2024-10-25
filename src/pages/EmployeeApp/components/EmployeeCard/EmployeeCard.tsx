@@ -62,13 +62,16 @@ function EmployeeCard() {
           <UsersNotFound>Users not found</UsersNotFound>
         )}
       </CardsPosition>
-      <ButtonControl>
-        <Button
-          isDeleteVariant
-          name="Remove All Employees"
-          onClick={deleteAllEmployees}
-        />
-      </ButtonControl>
+
+      {employeeInitialState.length > 0 && (
+        <ButtonControl>
+          <Button
+            isDeleteVariant
+            name="Remove All Employees"
+            onClick={deleteAllEmployees}
+          />
+        </ButtonControl>
+      )}
     </PageWrapper>
   )
 }

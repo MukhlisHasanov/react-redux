@@ -5,6 +5,7 @@ import * as Yup from "yup"
 import Input from "components/Input/Input"
 import Button from "components/Button/Button"
 
+
 import { APP_EMPLOYEE_ROUTES } from "constants/routes"
 
 import { EmployeeFormContainer, InputContainer } from "./styles"
@@ -95,6 +96,7 @@ function EmployeeForm() {
           error={formik.errors.jobPosition}
         />
       </InputContainer>
+
       <Button type="submit" name="Create" />
     </EmployeeFormContainer>
   )

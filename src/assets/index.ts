@@ -1,0 +1,1 @@
+export {default as EmployeeAppLogo } from "./employeeAppLogo.png"

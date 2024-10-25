@@ -11,7 +11,7 @@ export enum APP_ROUTES {
 }
 
 export enum APP_EMPLOYEE_ROUTES {
-  CREATE_EMPLOYEE = "/createEmployee",
+  CREATE_EMPLOYEE = "/",
   EMPLOYEES = "/employees",
   NOT_FOUND = "*",
 }

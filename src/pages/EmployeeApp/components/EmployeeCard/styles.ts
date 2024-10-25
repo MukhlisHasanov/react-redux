@@ -1,5 +1,4 @@
 import styled from "@emotion/styled"
-import { colors } from "styles/colors"
 
 export const PageWrapper = styled.div`
   display: flex;
@@ -7,12 +6,14 @@ export const PageWrapper = styled.div`
   justify-content: left;
   align-items: center;
   flex: 1;
-  padding: 60px;
   gap: 50px;
 `
+
 export const CardsPosition = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px;
 `
 
 export const CardWrapper = styled.div`

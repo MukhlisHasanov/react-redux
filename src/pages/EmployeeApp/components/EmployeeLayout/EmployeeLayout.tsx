@@ -5,7 +5,10 @@ import {
   HeaderNav,
   HeaderLink,
   Main,
+  LogoImg,
 } from "./styles"
+
+import { EmployeeAppLogo} from "assets"
 
 import { v4 } from "uuid"
 import { useNavigate } from "react-router-dom"
@@ -42,7 +45,12 @@ function EmployeeLayout({ children }: EmployeeLayoutProps) {
   return (
     <EmployeeLayoutWrapper>
       <AppHeader>
-        <HeaderLogo onClick={goToEmployeeForm}>Logo</HeaderLogo>
+        <HeaderLogo onClick={goToEmployeeForm}>
+          <LogoImg
+            src={EmployeeAppLogo}
+            alt="logo"
+          ></LogoImg>
+        </HeaderLogo>
         <HeaderNav>{headerLinks}</HeaderNav>
       </AppHeader>
       <Main>{children}</Main>
