@@ -3,19 +3,21 @@ import styled from "@emotion/styled"
 export const EmployeeFormContainer = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 4px;
   height: 100%;
-  width: 590px;
   border: 1px solid black;
-  border-radius: 5px;
   text-align: center;
-  background-color: white;
-  padding: 50px;
+  gap: 30px;
+  padding: 60px;
+  width: 600px;
+  border-radius: 4px;
+  background-color: #ffffff;
 `
 
 export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  width: 470px;
+  gap: 20px;
+  font-size: 44px;
   text-align: left;
 `

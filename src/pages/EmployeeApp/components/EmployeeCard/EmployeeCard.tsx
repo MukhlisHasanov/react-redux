@@ -6,6 +6,7 @@ import {
   PageWrapper,
   ButtonControl,
   LabelName,
+  CardsPosition,
 } from "./styles"
 
 import { useAppSelector, useAppDispatch } from "store/hooks"
@@ -36,7 +37,6 @@ function EmployeeCard() {
             <CardItem>{employee.name}</CardItem>
           </CardLabel>
           <CardLabel>
-            {" "}
             <LabelName>Surname:</LabelName>
             <CardItem>{employee.surname}</CardItem>
           </CardLabel>
@@ -50,24 +50,26 @@ function EmployeeCard() {
           </CardLabel>
           <Button isDeleteVariant name="Delete" onClick={deleteEmployee} />
         </CardWrapper>
-        <ButtonControl>
-          <Button
-            isDeleteVariant
-            name="Remove All Employees"
-            onClick={deleteAllEmployees}
-          />
-        </ButtonControl>
       </PageWrapper>
     )
   })
   return (
-    <>
-      {employeeInitialState.length > 0 ? (
-        employeeCards
-      ) : (
-        <UsersNotFound>Users not found</UsersNotFound>
-      )}{" "}
-    </>
+    <PageWrapper>
+      <CardsPosition>
+        {employeeInitialState.length > 0 ? (
+          employeeCards
+        ) : (
+          <UsersNotFound>Users not found</UsersNotFound>
+        )}
+      </CardsPosition>
+      <ButtonControl>
+        <Button
+          isDeleteVariant
+          name="Remove All Employees"
+          onClick={deleteAllEmployees}
+        />
+      </ButtonControl>
+    </PageWrapper>
   )
 }
 

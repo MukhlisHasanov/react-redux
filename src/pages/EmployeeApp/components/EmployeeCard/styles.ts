@@ -4,11 +4,15 @@ import { colors } from "styles/colors"
 export const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   flex: 1;
   padding: 60px;
   gap: 50px;
+`
+export const CardsPosition = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 `
 
 export const CardWrapper = styled.div`
@@ -41,7 +45,7 @@ export const LabelName = styled.div`
 `
 
 export const CardItem = styled.div`
-  font-family:  "Lato";
+  font-family: "Lato";
   font-size: 28px;
   font-weight: 700;
   line-height: 36.4px;
