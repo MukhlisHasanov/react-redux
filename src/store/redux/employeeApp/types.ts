@@ -8,5 +8,4 @@ export interface Employee {
 
 export interface EmployeeSliceInitialState {
   data: Employee[]
-  error: undefined | string
 }
