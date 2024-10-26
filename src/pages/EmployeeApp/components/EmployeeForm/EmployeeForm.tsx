@@ -11,10 +11,9 @@ import { APP_EMPLOYEE_ROUTES } from "constants/routes"
 import { EmployeeFormContainer, InputContainer } from "./styles"
 import { EMPLOYEE_FORM_NAMES } from "./types"
 
-import { useAppDispatch, useAppSelector } from "store/hooks"
+import { useAppDispatch } from "store/hooks"
 import {
   employeeSliceActions,
-  employeeSliceSelectors,
 } from "store/redux/employeeApp/employeeSlice"
 
 function EmployeeForm() {
